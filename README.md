@@ -3,7 +3,7 @@
 This project focuses on fine-tuning the BioLinkBERT-base model for Named Entity Recognition (NER) on a custom dataset of biochemical assay descriptions extracted from the ChEMBL database. The goal is to identify and extract key entities such as target names and substrate names from experimental descriptions.
 
 Variety of assay descriptions is visualized below:
-![UMAP Visualization of Assay Description Embeddings|500](./images/embeddings_vis.png)
+![UMAP Visualization of Assay Description Embeddings](./images/embeddings_vis.png)
 
 To create the dataset, **meta-llama/Llama-3-70B-Instruct** was used for preliminary annotation. The model was provided with a few-shot instruction consisting of seven handcrafted examples. Each example demonstrated how to extract target names and substrate names from various assay descriptions.
 
@@ -26,6 +26,32 @@ The fine-tuned model achieved the following results on the test set:
 These metrics demonstrate the model's ability to accurately identify and extract target and substrate names from assay descriptions.
 
 Example of model evaluation on random assay description from ChEMBL is shown below:
-![Evaluation example|500](./images/evaluation_example.png)
+
+| Token          | Label        |
+|---------------|-------------|
+| [CLS]        | O           |
+| activation   | O           |
+| of          | O           |
+| human       | O           |
+| beta        | B-TARGET    |
+| -           | I-TARGET    |
+| adrenergic  | I-TARGET    |
+| receptor    | I-TARGET    |
+| by          | O           |
+| isoproterenol | B-SUBSTRATE |
+| at          | O           |
+| 0           | O           |
+| .           | O           |
+| 5           | O           |
+| um         | O           |
+| measured   | O           |
+| as         | O           |
+| increase   | O           |
+| in         | O           |
+| camp       | O           |
+| levels     | O           |
+| [SEP]      | O           |
+
+
 
 
